@@ -7,7 +7,13 @@ on:
 
 jobs:
   test:
-    uses: 4khara/tattoo/.github/workflows/golang-test.yml@main
-    secrets:
-      github-login: "0x20F:${{ secrets.AUTH_TOKEN }}"
-      go-private: "4khara"
+    runs-on: ubuntu-latest
+
+    name: Run unit tests
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup go
+        uses: actions/setup-go@v2
+
+      - run: go test ./...
