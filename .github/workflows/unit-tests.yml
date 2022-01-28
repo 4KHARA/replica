@@ -1,0 +1,13 @@
+name: Unit Tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "**" ]
+
+jobs:
+  test:
+    uses: 4khara/tattoo/.github/workflows/golang-test.yml@main
+    secrets:
+      github-login: "0x20F:${{ secrets.AUTH_TOKEN }}"
+      go-private: "4khara"
